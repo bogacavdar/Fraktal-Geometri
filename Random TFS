@@ -1,0 +1,53 @@
+import edu.princeton.cs.introcs.StdArrayIO;
+import edu.princeton.cs.introcs.StdDraw;
+import edu.princeton.cs.introcs.StdRandom;
+
+public class Fraktal_Geometri {
+
+	public static void main(String[] args) {
+
+		double[] olasilik = StdArrayIO.readDouble1D();
+        StdArrayIO.print(olasilik);
+        double[][] r_theta_e = StdArrayIO.readDouble2D();
+       StdDraw.setPenRadius(0.001);
+       StdDraw.setCanvasSize(600,600);
+        StdArrayIO.print(r_theta_e);
+       
+        double[][] phi_s_f = StdArrayIO.readDouble2D();
+        
+        StdArrayIO.print(phi_s_f);
+       
+        double x = 0.0, y = 0.0;
+       
+        for (int i = 0; i < 1000000; i++) { 
+       
+            int p = StdRandom.discrete(olasilik) ;
+        
+            if(p==0)
+            	StdDraw.setPenColor(StdDraw.RED);
+            if(p==1)
+            	StdDraw.setPenColor(StdDraw.BLUE);
+            if(p==2)
+            	StdDraw.setPenColor(StdDraw.GREEN);
+            if(p==3)
+            	StdDraw.setPenColor(StdDraw.YELLOW);
+            if(p==4)
+            	StdDraw.setPenColor(StdDraw.BLACK);
+            if(p==5)
+            	StdDraw.setPenColor(StdDraw.CYAN);
+            if(p==6)
+            	StdDraw.setPenColor(StdDraw.MAGENTA);
+            if(p==7)
+            	StdDraw.setPenColor(StdDraw.PINK);
+
+            double x0 = r_theta_e[p][0]*x + r_theta_e[p][1]*y + r_theta_e[p][2]; 
+
+            double y0 = phi_s_f[p][0]*x + phi_s_f[p][1]*y + phi_s_f[p][2]; 
+            x = x0;
+            y = y0;  
+            StdDraw.pause(1);
+            StdDraw.point(x, y);    
+            }
+	}
+
+}
